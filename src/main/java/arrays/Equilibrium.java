@@ -2,6 +2,7 @@ package arrays;
 
 /**
  *  This is a solution for the Equilibrium challenges (the middle element where leftSum == rightSum)
+ *
  *  Steps:
  *   - calculate the summation from the 3rd element to the end of the array ( rightSum )
  *   - the 1st element will be the ( leftSum )
@@ -15,7 +16,7 @@ package arrays;
  *   - Equilibrium index searching: O(n)
  *   - All: O(n+n) which in fact is the same as O(n)
  *
- *  Hints:
+ *  Hint:
  *   - rightSum calculation: used java 8 parallel stream to increase the performance
  *
  *  Test Samples:
