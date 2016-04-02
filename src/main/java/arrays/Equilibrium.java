@@ -29,7 +29,8 @@ import java.util.Arrays;
 public class Equilibrium {
     public static void main(String[] args) {
         int[] arr = {1, 1, 1, 2};
-        System.out.println(getEquilibriumIndex(arr));
+        int index = getEquilibriumIndex(arr);
+        System.out.println(index != -1 ? "Element found @ arr[" + index + "] = " + arr[index] : "Element not found!");
     }
 
     private static int getEquilibriumIndex(int[] arr) {
