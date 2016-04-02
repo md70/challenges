@@ -37,9 +37,8 @@ public class Equilibrium {
         int i = 1;
         int rightSum = Arrays.stream(arr).parallel().sum() - (arr[0] + arr[1]);
         while (i < arr.length-1) {
-           if (leftSum == rightSum) {
-               return i;
-           } else {
+           if (leftSum == rightSum) { return i; }
+           else {
                leftSum += arr[i];
                rightSum -= arr[++i];
            }
