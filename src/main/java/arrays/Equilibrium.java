@@ -42,7 +42,7 @@ public class Equilibrium {
         while (i < arr.length-1)
             if (leftSum == rightSum) return i;
             else {
-                leftSum += arr[i];
+                leftSum  += arr[ i ];
                 rightSum -= arr[++i];
             }
         return -1;
