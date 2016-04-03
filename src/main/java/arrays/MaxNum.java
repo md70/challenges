@@ -16,8 +16,8 @@ public class MaxNum {
 
     /**
      * Traditional/Old way to get the max number in an array
-     * @param arr
-     * @return
+     * @param arr of integers
+     * @return the max number in the array
      */
     private static int getMax1(int[] arr) {
         int max = arr[1];
@@ -30,8 +30,8 @@ public class MaxNum {
     /**
      * Modern way to get the max number in an array
      * Using Java 8
-     * @param arr
-     * @return
+     * @param arr of integers
+     * @return the max number in the array
      */
     private static int getMax2(int[] arr) {
         return Optional.of(Arrays.stream(arr).parallel().max()).get().getAsInt();
@@ -39,8 +39,8 @@ public class MaxNum {
 
     /**
      * Another way using Java 8
-     * @param arr
-     * @return
+     * @param arr of integers
+     * @return the max number in the array
      */
     private static int getMax3(int[] arr) {
         return IntStream.of(arr).max().getAsInt();
@@ -48,8 +48,8 @@ public class MaxNum {
 
     /**
      * Another way using Java Collections utils
-     * @param arr
-     * @return
+     * @param arr of integers
+     * @return the max number in the array
      */
     private static int getMax4(Integer[] arr) {
         return Collections.max(Arrays.asList(arr));
