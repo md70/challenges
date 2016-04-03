@@ -19,7 +19,7 @@ public class MaxNum {
     public static void main(String[] args) {
         Integer[] arr = {3, 5, 6, 7};
         getMax5(arr);
-//        System.out.println(getMax5(arr));
+//        System.out.println(getMax1(arr));
     }
 
     /**
