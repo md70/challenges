@@ -80,6 +80,4 @@ public class MaxNum {
     private static int getMax6(int[] arr) {
         return NumberUtils.max(arr);
     }
-
-
 }
