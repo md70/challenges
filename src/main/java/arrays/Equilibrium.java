@@ -24,26 +24,27 @@ package arrays;
  *   - {-7, 1, 5, 2, -4, 3, 0}
  */
 
-import java.util.Arrays;
+import static java.util.Arrays.stream;
 
 public class Equilibrium {
     public static void main(String[] args) {
         int[] arr = {1, 1, 1, 2};
-        int index = getEquilibriumIndex(arr);
-        System.out.println(index != -1 ? "Element found @ arr[" + index + "] = " + arr[index] : "Element not found!");
+        int i = getEquilibriumIndex(arr);
+        System.out.println( i == -1
+                            ? "Not found!"
+                            : "Found @ arr["+i+"]=" + arr[i] );
     }
 
     private static int getEquilibriumIndex(int[] arr) {
         int leftSum = arr[0];
         int i = 1;
-        int rightSum = Arrays.stream(arr).parallel().sum() - (arr[0] + arr[1]);
-        while (i < arr.length-1) {
-           if (leftSum == rightSum) { return i; }
-           else {
-               leftSum += arr[i];
-               rightSum -= arr[++i];
-           }
-        }
+        int rightSum = stream(arr).parallel().sum() - (arr[0] + arr[1]);
+        while (i < arr.length-1)
+            if (leftSum == rightSum) return i;
+            else {
+                leftSum += arr[i];
+                rightSum -= arr[++i];
+            }
         return -1;
     }
 }
