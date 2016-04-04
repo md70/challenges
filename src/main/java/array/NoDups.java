@@ -18,24 +18,20 @@ public class NoDups {
      */
     private static int[] getNoDups1(Integer[] arr) {
         int nullsCount = 0;
-        for (int x = 0; x < arr.length - 1; x++) {
+        for (int x = 0; x < arr.length - 1; x++)
             if (arr[x] != null)
-                for (int y = x+1 ; y < arr.length; y++) {
-                    if (arr[y] != null) {
-                        if (arr[x].equals(arr[y])) {
-                            arr[y] = null;
-                            nullsCount++;
-                        }
+                for (int y = x+1 ; y < arr.length; y++)
+                    if (arr[y] != null && arr[x].equals(arr[y])) {
+                        arr[y] = null;
+                        nullsCount++;
                     }
-                }
-        }
 
         int[] noDups = new int[arr.length - nullsCount];
         int i = 0;
-        for (Integer e : arr) {
+        for (Integer e : arr)
             if (e != null)
                 noDups[i++] = e;
-        }
+
         return noDups;
     }
 
