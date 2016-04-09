@@ -1,4 +1,4 @@
-package array;
+package arrays;
 
 /**
  *  This is a solution for the Equilibrium challenges (the middle element where leftSum == rightSum)

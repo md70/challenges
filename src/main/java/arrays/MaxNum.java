@@ -1,4 +1,4 @@
-package array;
+package arrays;
 
 /**
  * These are different ways to get the max num in an array
