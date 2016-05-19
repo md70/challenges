@@ -3,50 +3,41 @@ package numbers;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import static numbers.BasedNumber.Base.contains;
+import static numbers.BasedNumber.Base.HEX;
+import static numbers.BasedNumber.Base.OCT;
+import static numbers.BasedNumber.Base.BIN;
+import static numbers.BasedNumber.Base.DEC;
 
 public class BasedNumber {
 
     enum Base {
         HEX(16), OCT(8), BIN(2), DEC(10);
-
         int base;
-
         Base(int base) {
             this.base = base;
-        }
-
-        public static boolean contains(int base) {
-            for (Base b : Base.values())
-                if (b.base == base)
-                    return true;
-            return false;
-
-//            Using Java 8
-//            return Stream.of(Base.values()).anyMatch(b -> b.base == base);
         }
     }
 
     public static void main(String[] args) {
-        String hex = "7f";    // = 127
-        String oct = "47";    // = 39
-        String bin = "11";    // = 3
-        String dec = "12";    // = 12
-        System.out.println(decimalOf(hex, 16));
-        System.out.println(decimalOf(oct, 8 ));
-        System.out.println(decimalOf(bin, 2 ));
-        System.out.println(decimalOf(dec, 10));
+        System.out.println(decimalIntValueOf("7f", HEX));       // = 127
+        System.out.println(decimalIntValueOf("47", OCT));       // = 39
+        System.out.println(decimalIntValueOf("11", BIN));       // = 3
+        System.out.println(decimalIntValueOf("12", DEC));       // = 12
     }
 
-    private static int decimalOf(String number, int base) {
-        if (!contains(base)) return -1;
+    /**
+     * convert string number in any representation (HEX, OCT. BIN, DEC) to decimal integer value
+     * @param number valid string number
+     * @param b the number representation
+     * @return decimal integer value or -1 if the number is invalid
+     */
+    private static int decimalIntValueOf(String number, Base b) {
         int value = 0;
         for (int i = number.length() - 1; i >= 0; i--) {
             int digit = valueOf(number.charAt(i));
-            if (digit == -1)
-                return -1;
+            if (digit == -1) return -1;
             int exp = number.length() - 1 - i;
-            value += digit * Math.pow(base, exp);
+            value += digit * Math.pow(b.base, exp);
         }
         return value;
     }
