@@ -35,7 +35,7 @@ public class BasedNumber {
         int value = 0;
         for (int i = number.length() - 1; i >= 0; i--) {
             int digit = valueOf(number.charAt(i));
-            if (digit == -1) return -1;
+            if (digit < 0) return -1;
             int exp = number.length() - 1 - i;
             value += digit * Math.pow(b.base, exp);
         }
