@@ -1,12 +1,6 @@
 package numbers;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
-import static numbers.BasedNumber.Base.HEX;
-import static numbers.BasedNumber.Base.OCT;
-import static numbers.BasedNumber.Base.BIN;
-import static numbers.BasedNumber.Base.DEC;
+import static numbers.BasedNumber.Base.*;
 
 public class BasedNumber {
 
