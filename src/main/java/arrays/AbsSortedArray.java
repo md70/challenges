@@ -22,33 +22,33 @@ public class AbsSortedArray {
      * My Solution by make use of Binary Search
      * It's O(n) time and O(1) space
      * @param a
-     * @param k
+     * @param sum
      * @return
      */
-    private static int[] findPairSumK(int[] a, int k) {
-        int max = a.length-1;
+    private static int[] findPairSumK(int[] a, int sum) {
+        int leftIdx = a.length-1;           // left most index
 
-        int lo = 0;
-        int hi = max-1;
+        int lo = 0;                         // Low / Right index for binary search
+        int hi = leftIdx-1;                 // High / Left index for binary search
 
-        while(max > 0) {
-            if (lo <= hi) {
-                int diff = k - a[max];
-                int mid = (lo + hi) >>> 1;
+        while(leftIdx > 0) {
+            if (lo <= hi) {                 // Binary search for the difference between the sum and the most left element
+                int diff = sum - a[leftIdx];
+                int mid = lo + (hi - lo) / 2;
 
-                if (abs(a[mid]) < abs(diff)) {
+                if (abs(a[mid]) < abs(diff)) {          // Because of the array is Abs-sorted, we are comparing by the the Absolute Values
                     lo = mid + 1;
                 } else if (abs(a[mid]) > abs(diff)) {
                     hi = mid - 1;
-                } else if (mid != max && a[mid] == diff){     // Number found
-                    return new int[]{mid, max};
-                } else {
+                } else if (a[mid] == diff && mid != leftIdx){     // Number Found here in this else clause, then we are checking the values are equals (Not Absolute),
+                    return new int[]{mid, leftIdx};               // Also checking that is not the same index with the left to return the result as Pair of two different indices
+                } else {            // Number Not Found, and starting new binary search for the new difference
                     lo = 0;
-                    hi = --max;
+                    hi = --leftIdx;
                 }
-            } else {
+            } else {        // the 'lo' index exceed the 'hi' index of the binary search, mean Number Not Found
                 lo = 0;
-                hi = --max;
+                hi = --leftIdx;
             }
         }
         return new int[]{-1, -1};
